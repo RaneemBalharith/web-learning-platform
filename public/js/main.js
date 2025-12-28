@@ -8,6 +8,11 @@ loadLanguage = Renderer (renders text on the page)
 localStorage = Persistence (saves language after refresh)
 Button = Trigger (changes the state)
 */
+async function loadHeader() {
+    const response = await fetch("/partials/header.html");
+    const headerHTML = await response.text();
+    document.getElementById("header").innerHTML = headerHTML;
+}
 
 // 1️⃣ Default language (or get saved language from localStorage)
 let currentLanguage = localStorage.getItem("lang") || "en";
@@ -37,14 +42,26 @@ async function loadLanguage(lang) {
         if (value) {
             element.textContent = value;
         }
+        if (translations.pageTitle) {
+            document.title = translations.pageTitle;
+        }
     });
 
     // 4️⃣ Change text direction (RTL for Arabic, LTR for English)
     document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
 }
+// loading header 
+async function loadHeader() {
+    const response = await fetch("/partials/header.html");
+    const headerHTML = await response.text();
+
+    document.getElementById("header").innerHTML = headerHTML;
+}
 
 // 5️⃣ Wait until HTML is fully loaded
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
+    await loadHeader();
+
     const langBtn = document.getElementById("lang-btn");
 
     // Initial render
@@ -65,4 +82,21 @@ document.addEventListener("DOMContentLoaded", () => {
         // Update button label
         langBtn.textContent = currentLanguage === "en" ? "AR" : "EN";
     });
+});
+
+function setActiveNav() {
+    const currentPath = window.location.pathname.split("/").pop(); // يجيب اسم الملف فقط
+
+    document.querySelectorAll(".nav-links a").forEach(link => {
+        const linkPath = link.getAttribute("href").split("/").pop();
+        if (linkPath === currentPath) {
+            link.classList.add("active");
+        } else {
+            link.classList.remove("active");
+        }
+    });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    setActiveNav();
 });

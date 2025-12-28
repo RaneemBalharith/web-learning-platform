@@ -1,0 +1,113 @@
+.main-header {
+  background: red !important;
+}
+/* =========================
+   1️⃣ CSS VARIABLES (THEME)
+========================= */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #111111;
+  --primary-color: #111111;
+  --border-color: #eeeeee;
+}
+
+[data-theme="dark"] {
+  --bg-color: #111111;
+  --text-color: #ffffff;
+  --primary-color: #ffffff;
+  --border-color: #333333;
+}
+
+/* =========================
+   2️⃣ RESET & BASE STYLES
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.6;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+/* =========================
+   3️⃣ LAYOUT
+========================= */
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 2rem 1.5rem;
+}
+
+/* =========================
+   4️⃣ HEADER & NAVIGATION
+========================= */
+.main-header {
+  background-color: var(--bg-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.nav {
+  max-width: 1200px;
+  margin: auto;
+  padding: 16px 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo */
+.nav-left .logo {
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+/* Navigation links */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 24px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
+/* Right buttons */
+.nav-right button {
+  background: none;
+  border: 1px solid var(--border-color);
+  padding: 6px 12px;
+  cursor: pointer;
+  color: var(--text-color);
+  border-radius: 4px;
+}
+
+.nav-links a.active {
+    border-bottom: 2px solid #333;
+    color: #5821bd; /* أو أي لون تبي */
+    font-weight: bold;
+}
+/* =========================
+   5️⃣ FOOTER
+========================= */
+.footer {
+  background-color: #f1f1f1;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 3rem;
+  font-size: 14px;
+}

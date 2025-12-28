@@ -5,6 +5,7 @@ const app = express();
 
 // Static files
 app.use(express.static("public"));
+app.use("/locales", express.static("locales"));
 
 // Routes
 const pagesRoutes = require("./routes/pages");

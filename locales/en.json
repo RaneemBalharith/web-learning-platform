@@ -1,3 +1,10 @@
 {
-    "title": "Test"
-  }
+    "home": {
+        "title": "Welcome to Web Learning Platform",
+        "description": "Learn web development step by step with videos and quizzes."
+    },
+    "common": {
+        "contact": "Contact Us",
+        "language": "Language"
+    }
+}
